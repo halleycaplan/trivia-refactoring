@@ -117,3 +117,4 @@ Sue's new location is 9
 The category is Science
 Science Question 5
 Answer was correct!!!!
+Sue now has 6 Gold Coins.
