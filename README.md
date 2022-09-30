@@ -1,3 +1,11 @@
+What I did:
+- I made more functions for repeated code and code that didn't make much sense so that it now had a label to easily understand what it does. 
+- I created a player class to keep player and game separate. 
+- I tried my best to make each variable and function name as clear as possible. 
+- I deleted dead code. 
+- I added two testing files so the trivia game would run the same as it did before I refactored.
+
+
 an Ugly Trivia Game
 
 This game needs refactoring!
