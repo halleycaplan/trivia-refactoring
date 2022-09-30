@@ -22,16 +22,16 @@ class Game ():
         self.current_player = 0
         self.is_getting_out_of_penalty_box = False
 
-        for i in range(50):
+        for i in range(50): #creates questions
             self.pop_questions.append("Pop Question %s" % i)
             self.science_questions.append("Science Question %s" % i)
             self.sports_questions.append("Sports Question %s" % i)
             self.rock_questions.append(self.create_rock_question(i))
 
-    def create_rock_question(self, index):
+    def create_rock_question(self, index): 
         return "Rock Question %s" % index
 
-    def add(self, player_name):
+    def add(self, player_name): #adds playersß
         player1 = Player(player_name,0,0,False)
         self.players.append(player1)
         print(player_name + " was added")
@@ -43,7 +43,7 @@ class Game ():
     def how_many_players(self):
         return len(self.players)
 
-    def roll(self, roll):
+    def roll(self, roll): #rolls dice for player
         self.now_player = self.players[self.current_player]
         print("%s is the current player" % self.now_player.name)
         print("They have rolled a %s" % roll)
@@ -53,9 +53,9 @@ class Game ():
                 self.is_getting_out_of_penalty_box = True
 
                 print("%s is getting out of the penalty box" % self.now_player.name)
-                self.valid_roll_range(roll)
+                self.valid_roll_range(roll) 
 
-                self.print_loc_cat()
+                self.print_loc_cat() # prints location and category
             else:
                 print("%s is not getting out of the penalty box" % self.now_player.name)
                 self.is_getting_out_of_penalty_box = False
@@ -64,7 +64,7 @@ class Game ():
             self.print_loc_cat()
             
 
-    def print_loc_cat(self):
+    def print_loc_cat(self): 
         print(self.now_player.name + \
                             '\'s new location is ' + \
                             str(self.now_player.places))
@@ -95,15 +95,14 @@ class Game ():
     def was_correctly_answered(self):
         if self.now_player.in_penalty_box:
             if self.is_getting_out_of_penalty_box:
-                self.printAmtCoins()
+                self.printAmtCoins() # Prints amount of points
 
                 winner = self._did_player_win()
-                self.change_player()
+                self.change_player() 
                 return winner
             else:
                 self.change_player()
                 return True
-
 
 
         else:
@@ -150,9 +149,9 @@ if __name__ == '__main__':
     game.add('Pat')
     game.add('Sue')
 
-    random.seed(10)
+    random.seed(10) # --> for testing
     while True:
-        game.roll(random.randrange(5) + 1)
+        game.roll(random.randrange(5) + 1) # random roll for dice 
 
         if random.randrange(9) == 7:
             not_a_winner = game.wrong_answer()
