@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import random
 
-class Player:
+class Player ():
     def __init__(self,n,p,t,b):
         self.name = n
         self.places = p
@@ -11,10 +11,8 @@ class Player:
 
 class Game ():
     def __init__(self):
-        # [],[0]*6,[0]*6,[0]*6
         self.players = []
-        
-        
+      
         self.pop_questions = []
         self.science_questions = []
         self.sports_questions = []
@@ -32,9 +30,6 @@ class Game ():
 
     def create_rock_question(self, index):
         return "Rock Question %s" % index
-
-    def is_playable(self):
-        return self.how_many_players >= 2
 
     def add(self, player_name):
         player1 = Player(player_name,0,0,False)
@@ -104,11 +99,9 @@ class Game ():
 
                 winner = self._did_player_win()
                 self.change_player()
-                if self.current_player == len(self.players): self.current_player = 0
                 return winner
             else:
                 self.change_player()
-                self.now_player = self.players[self.current_player]
                 return True
 
 
@@ -117,8 +110,7 @@ class Game ():
             self.printAmtCoins()
 
             winner = self._did_player_win()
-            self.current_player += 1
-            if self.current_player == len(self.players): self.current_player = 0
+            self.change_player()
 
             return winner
 
