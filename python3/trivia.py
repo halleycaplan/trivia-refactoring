@@ -89,15 +89,12 @@ class Game ():
 
     @property
     def _current_category(self):
-        if self.now_player.places == 0: return 'Pop'
-        if self.now_player.places == 4: return 'Pop'
-        if self.now_player.places == 8: return 'Pop'
-        if self.now_player.places == 1: return 'Science'
-        if self.now_player.places == 5: return 'Science'
-        if self.now_player.places == 9: return 'Science'
-        if self.now_player.places == 2: return 'Sports'
-        if self.now_player.places == 6: return 'Sports'
-        if self.now_player.places == 10: return 'Sports'
+        if self.now_player.places == 0 or self.now_player.places == 4 or self.now_player.places == 8:
+            return 'Pop'
+        elif self.now_player.places == 1 or self.now_player.places == 5 or self.now_player.places == 9:
+            return 'Science'
+        elif self.now_player.places == 2 or self.now_player.places == 6 or self.now_player.places == 10: 
+            return 'Sports'
         return 'Rock'
 
     def was_correctly_answered(self):
@@ -143,8 +140,7 @@ class Game ():
         print(self.now_player.name + " was sent to the penalty box")
         self.now_player.in_penalty_box = True
 
-        self.current_player += 1
-        if self.current_player == len(self.players): self.current_player = 0
+        self.change_player()
         return True
 
     def _did_player_win(self):
